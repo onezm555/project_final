@@ -1,0 +1,610 @@
+/* Sweet Alert Styles */
+.sweet-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: sweetAlertFadeIn 0.3s ease-out;
+  overflow: hidden; /* ป้องกันการเลื่อน */
+  font-family: 'Noto Sans Thai', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ป้องกันการเลื่อนของ body เมื่อ alert เปิด */
+body.sweet-alert-open {
+  overflow: hidden !important;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* ป้องกันการเลื่อนใน mobile */
+body.sweet-alert-open * {
+  -webkit-overflow-scrolling: touch;
+}
+
+.sweet-alert-container {
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: visible; /* เปลี่ยนจาก auto เป็น visible */
+  position: relative;
+  z-index: 10000;
+}
+
+.sweet-alert-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: sweetAlertSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  max-height: 85vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Icons */
+.sweet-alert-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  position: relative;
+}
+
+.sweet-alert-icon-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Success Icon */
+.sweet-alert-icon.success .sweet-alert-icon-content {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  animation: sweetAlertPulse 0.6s ease-out, sweetAlertSuccessScale 0.8s ease-out;
+  position: relative;
+  overflow: visible;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.sweet-alert-success-ring {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+  opacity: 0;
+  animation: sweetAlertSuccessRing 1.0s ease-out 0.3s both;
+}
+
+.sweet-alert-success-checkmark {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sweet-alert-success-line {
+  position: absolute;
+  background: #fff;
+  border-radius: 2px;
+  opacity: 0;
+  transform-origin: left center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sweet-alert-success-line-1 {
+  width: 18px;
+  height: 3px;
+  transform: rotate(45deg) scaleX(0);
+  left: 9px;
+  top: 20px;
+  animation: sweetAlertSuccessLine1 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
+}
+
+.sweet-alert-success-line-2 {
+  width: 10px;
+  height: 3px;
+  transform: rotate(-45deg) scaleX(0);
+  left: 21px;
+  top: 23px;
+  animation: sweetAlertSuccessLine2 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.0s both;
+}
+
+/* Error Icon */
+.sweet-alert-icon.error .sweet-alert-icon-content {
+  background: linear-gradient(135deg, #dc3545, #e74c3c);
+  animation: sweetAlertShake 0.6s ease-out, sweetAlertErrorScale 0.8s ease-out;
+  position: relative;
+  overflow: visible;
+}
+
+.sweet-alert-error-x {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.sweet-alert-error-line {
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  opacity: 0;
+}
+
+.sweet-alert-error-line-1 {
+  transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  animation: sweetAlertErrorLine1 0.5s ease-out 0.3s both;
+}
+
+.sweet-alert-error-line-2 {
+  transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+  animation: sweetAlertErrorLine2 0.5s ease-out 0.5s both;
+}
+
+/* Warning Icon */
+.sweet-alert-icon.warning .sweet-alert-icon-content {
+  background: linear-gradient(135deg, #ffc107, #fd7e14);
+  animation: sweetAlertBounce 0.6s ease-out, sweetAlertWarningScale 0.8s ease-out;
+  position: relative;
+  overflow: visible;
+}
+
+.sweet-alert-warning-body {
+  width: 4px;
+  height: 30px;
+  background: #fff;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  animation: sweetAlertWarningBody 0.8s ease-out 0.2s both;
+}
+
+.sweet-alert-warning-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  animation: sweetAlertWarningDot 0.8s ease-out 0.5s both;
+}
+
+/* Info Icon */
+.sweet-alert-icon.info .sweet-alert-icon-content {
+  background: linear-gradient(135deg, #17a2b8, #007bff);
+  animation: sweetAlertRotate 0.6s ease-out;
+}
+
+.sweet-alert-info-body {
+  width: 4px;
+  height: 25px;
+  background: #fff;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  animation: sweetAlertInfoBody 0.8s ease-out 0.2s both;
+}
+
+.sweet-alert-info-dot {
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  animation: sweetAlertInfoDot 0.8s ease-out 0.5s both;
+}
+
+/* Confirm Icon */
+.sweet-alert-icon.confirm .sweet-alert-icon-content {
+  background: linear-gradient(135deg, #6f42c1, #007bff);
+  animation: sweetAlertBounce 0.6s ease-out;
+}
+
+.sweet-alert-confirm-body {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: sweetAlertConfirmBody 0.8s ease-out 0.2s both;
+}
+
+/* Text */
+.sweet-alert-text {
+  margin-bottom: 2rem;
+}
+
+.sweet-alert-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.sweet-alert-message {
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+/* Buttons */
+.sweet-alert-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sweet-alert-button {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sweet-alert-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.sweet-alert-button:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+.sweet-alert-button-cancel {
+  background: #6c757d;
+  color: #fff;
+}
+
+.sweet-alert-button-cancel:hover {
+  background: #545b62;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(108, 117, 125, 0.3);
+}
+
+.sweet-alert-button-confirm {
+  color: #fff;
+}
+
+.sweet-alert-button-confirm.success {
+  background: linear-gradient(135deg, #28a745, #20c997);
+}
+
+.sweet-alert-button-confirm.success:hover {
+  background: linear-gradient(135deg, #218838, #1e7e34);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+}
+
+.sweet-alert-button-confirm.error {
+  background: linear-gradient(135deg, #dc3545, #e74c3c);
+}
+
+.sweet-alert-button-confirm.error:hover {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+}
+
+.sweet-alert-button-confirm.warning {
+  background: linear-gradient(135deg, #ffc107, #fd7e14);
+  color: #333;
+}
+
+.sweet-alert-button-confirm.warning:hover {
+  background: linear-gradient(135deg, #e0a800, #dc6502);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.3);
+}
+
+.sweet-alert-button-confirm.info {
+  background: linear-gradient(135deg, #17a2b8, #007bff);
+}
+
+.sweet-alert-button-confirm.info:hover {
+  background: linear-gradient(135deg, #138496, #0056b3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(23, 162, 184, 0.3);
+}
+
+.sweet-alert-button-confirm.confirm {
+  background: linear-gradient(135deg, #6f42c1, #007bff);
+}
+
+.sweet-alert-button-confirm.confirm:hover {
+  background: linear-gradient(135deg, #59359a, #0056b3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(111, 66, 193, 0.3);
+}
+
+/* Progress Bar */
+.sweet-alert-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.sweet-alert-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #28a745);
+  width: 100%;
+  transform: translateX(-100%);
+  animation: sweetAlertProgress linear forwards;
+}
+
+/* Animations */
+@keyframes sweetAlertFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sweetAlertSlideIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -60px, 0) scale(0.8);
+    filter: blur(5px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(0, 10px, 0) scale(1.05);
+    filter: blur(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes sweetAlertPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  50% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes sweetAlertShake {
+  0%, 100% { 
+    transform: translateX(0) scale(1);
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translateX(-5px) scale(1.02);
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translateX(5px) scale(1.02);
+  }
+}
+
+@keyframes sweetAlertBounce {
+  0%, 20%, 53%, 80%, 100% { 
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40%, 43% { 
+    transform: translate3d(0, -15px, 0) scale(1.1);
+  }
+  70% { 
+    transform: translate3d(0, -7px, 0) scale(1.05);
+  }
+  90% { 
+    transform: translate3d(0, -2px, 0) scale(1.02);
+  }
+}
+
+@keyframes sweetAlertRotate {
+  from { transform: rotate(-180deg) scale(0.8); }
+  to { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes sweetAlertSuccessScale {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sweetAlertSuccessRing {
+  0% { 
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2) rotate(0deg);
+  }
+  50% { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1) rotate(180deg);
+  }
+  100% { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  }
+}
+
+@keyframes sweetAlertSuccessLine1 {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) scaleX(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(45deg) scaleX(1);
+  }
+}
+
+@keyframes sweetAlertSuccessLine2 {
+  0% {
+    opacity: 0;
+    transform: rotate(-45deg) scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-45deg) scaleX(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-45deg) scaleX(1);
+  }
+}
+
+@keyframes sweetAlertErrorScale {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sweetAlertErrorLine1 {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+}
+
+@keyframes sweetAlertErrorLine2 {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+  }
+}
+
+@keyframes sweetAlertWarningScale {
+  0% { transform: scale(0.8); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sweetAlertWarningBody {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes sweetAlertWarningDot {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes sweetAlertInfoBody {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 25px;
+    opacity: 1;
+  }
+}
+
+@keyframes sweetAlertInfoDot {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes sweetAlertConfirmBody {
+  from {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes sweetAlertProgress {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sweet-alert-content {
+    padding: 1.5rem;
+  }
+  
+  .sweet-alert-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .sweet-alert-title {
+    font-size: 1.25rem;
+  }
+  
+  .sweet-alert-buttons {
+    flex-direction: column;
+  }
+  
+  .sweet-alert-button {
+    width: 100%;
+  }
+}

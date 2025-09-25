@@ -1,0 +1,577 @@
+[01-Sep-2025 23:05:19 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:05:19 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:05:19 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:05:49 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:05:50 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:06:01 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:06:01 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:06:01 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:06:01 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:06:01 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:06:02 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:06:02 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:06:19 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:06:49 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:07:19 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:07:33 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:07:41 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API - Database error: SQLSTATE[HY093]: Invalid parameter number
+[01-Sep-2025 23:08:03 Europe/Berlin] Calendar API - Stack trace: #0 C:\xampp\htdocs\project\calendar_items.php(138): PDOStatement->execute()
+#1 {main}
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10140
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Processing item ID: 10135
+[01-Sep-2025 23:08:13 Europe/Berlin] Calendar API - Successfully processed 12 calendar items
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10140
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Processing item ID: 10135
+[01-Sep-2025 23:08:33 Europe/Berlin] Calendar API - Successfully processed 12 calendar items
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API started - User ID: 2
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Starting database query for user: 2
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - SQL Query: 
+        SELECT DISTINCT
+            i.item_id,
+            i.user_id,
+            i.item_name,
+            i.item_number,
+            i.item_img,
+            i.item_barcode,
+            i.item_status,
+            i.used_quantity,
+            i.expired_quantity,
+            t.type_name as category,
+            id.expire_date as item_date,
+            id.notification_days,
+            'EXP' as date_type,
+            a.area_name as storage_location,
+            DATEDIFF(id.expire_date, CURDATE()) as days_left,
+            (i.item_number - i.used_quantity - i.expired_quantity) as remaining_quantity
+        FROM
+            items i
+        INNER JOIN item_details id ON i.item_id = id.item_id
+        LEFT JOIN types t ON i.type_id = t.type_id
+        LEFT JOIN areas a ON id.area_id = a.area_id
+        WHERE 
+            i.user_id = :user_id 
+            AND i.item_status = 'active'
+            AND id.status = 'active'
+            AND (i.item_number - i.used_quantity - i.expired_quantity) > 0
+        ORDER BY id.expire_date ASC
+    
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Found 12 items
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10145
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10139
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10148
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10150
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10140
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Processing item ID: 10135
+[01-Sep-2025 23:09:03 Europe/Berlin] Calendar API - Successfully processed 12 calendar items
